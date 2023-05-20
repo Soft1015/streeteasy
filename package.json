@@ -1,0 +1,27 @@
+{
+  "name": "StreetEasy",
+  "version": "1.0.0",
+  "description": "This is scrapiing for StreetEasy",
+  "main": "index.js",
+  "author": "Kirill",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "start": "node index",
+    "dev": "nodemon index"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "fs": "^0.0.1-security",
+    "google-spreadsheet": "^3.3.0",
+    "http": "^0.0.1-security",
+    "jsdom": "^22.0.0",
+    "node-fetch": "2.6.7",
+    "nodemon": "^2.0.22",
+    "objects-to-csv": "^1.3.6",
+    "puppeteer": "^20.2.1",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-recaptcha": "^3.6.8",
+    "puppeteer-extra-plugin-stealth": "^2.11.2"
+  }
+}
