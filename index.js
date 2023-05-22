@@ -73,6 +73,6 @@ function checkFile() {
 http.createServer().listen(process.env.PORT, process.env.HOST, () => {
     checkFile();
     console.log(`Server is running on http://${process.env.HOST}:${process.env.PORT}`);
-    // main();
+    main();
     getForSaleData();
 });

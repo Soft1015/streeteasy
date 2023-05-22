@@ -36,12 +36,19 @@ const getForSaleData = async () => {
         }
     }
 };
+function sleep(ms) {
+    return new Promise((resolve) => {
+      setTimeout(resolve, ms);
+    });
+  }
 
 const getDetailOfRoom = async (length, url, city, total) => {
     let partData = [];
     let iCnt = 1;
     for (let i = 0 + 1; i <= length; i++) {
         try {
+
+            await sleep(1000);            
             await page.goto(`${url}?page=${i}`, { waitUntil: 'load', timeout: 0 });
             const html = await page.content();
             const dom = new JSDOM(html);
@@ -82,7 +89,7 @@ const getDetailOfRoom = async (length, url, city, total) => {
                     //description
                     let desc = dom_detail.window.document.querySelectorAll('div > div.styled__InitialContentWrapper-sc-1nmrr8h-1.gsChKp > p');
                     if(desc){
-                        obj.description = desc[desc.length - 1].textContent.replace('<br>', '');
+                        obj.description = desc[desc.length - 1]?.textContent.replace('<br>', '');
                     }
                     const Vitals = dom_detail.window.document.querySelectorAll('div.Vitals > div');
                     if(Vitals){
@@ -116,14 +123,14 @@ const getDetailOfRoom = async (length, url, city, total) => {
                         obj["image_" + k] = imgs[k].getAttribute('data-src-large');
                     }
                 } catch (err){
-                    console.log(err);
+                    // console.log(err);
                 }
                 partData.push(obj);
-                console.log(obj);
+                // console.log(obj);
                 iCnt ++;
             }
         } catch (err) {
-            console.log(err);
+            // console.log(err);
         }
     }
     if(partData){
